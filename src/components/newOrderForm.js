@@ -38,7 +38,7 @@ class NewOrderForm extends React.Component {
   }
 
   handleSubmitOrder() {
-    const { ccyPair, submitOrder, type } = this.props
+    const { ccyPair, submitOrder, type, id } = this.props
     const order = JSON.stringify({
       investmentCcy: type === BUY ? ccyPair.ccy1 : ccyPair.ccy2,
       buy: type === BUY,
@@ -46,7 +46,7 @@ class NewOrderForm extends React.Component {
       limit: this.state.limit,
       validUntil: this.state.validUntil,
     });
-    submitOrder(order);
+    submitOrder(order, id);
   }
 
   render() {

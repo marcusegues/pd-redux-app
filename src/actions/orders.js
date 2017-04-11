@@ -31,23 +31,22 @@ const submitOrderRequest = () => ({
   type: SUBMIT_ORDER_REQUEST,
 });
 
-const submitOrderSuccess = (order) => ({
+const submitOrderSuccess = (order, id) => ({
   type: SUBMIT_ORDER_SUCCESS,
   order,
+  id,
 });
 
-export const submitOrder = (order) => {
+export const submitOrder = (order, id) => {
   return (dispatch) => {
     dispatch(submitOrderRequest());
     return api.submitOrder(order)
       .then(response => {
-        debugger
         return response.json()
       })
       .then(order => {
-        debugger;
         console.log('success', order);
-        dispatch(submitOrderSuccess(order))
+        dispatch(submitOrderSuccess(order, id))
       });
   }
 }
@@ -61,13 +60,13 @@ const cancelOrderSuccess = (order) => ({
   order,
 });
 
-export const cancelOrder = () => {
+export const cancelOrder = (order, id) => {
   return (dispatch) => {
     dispatch(cancelOrderRequest());
     return api.cancelOrder()
       .then(response => response.json())
       .then(order => {
-        dispatch(cancelOrderSuccess(order))
+        dispatch(cancelOrderSuccess(order, id))
       });
   }
 }

@@ -13,8 +13,8 @@ const mapStateToProps = (state, { id, ccyPair, type, initialPrice, handleCancelO
 };
 
 const mapDispatchToProps = dispatch => ({
-  submitOrder: (order) => dispatch(submitOrder(order)),
-  cancelOrder: (order) => dispatch(cancelOrder(order)),
+  submitOrder: (order, id) => dispatch(submitOrder(order, id)),
+  cancelOrder: (order, id) => dispatch(cancelOrder(order, id)),
 });
 
 export default connect(
