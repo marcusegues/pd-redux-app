@@ -10,3 +10,8 @@ const currencyPairs = combineReducers({
 });
 
 export default currencyPairs;
+
+// Selectors
+export const getVisibleCurrencyPairs = (state) => {
+  return state.allIds.map(id => state.byId[id]);
+}

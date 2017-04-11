@@ -1,21 +1,25 @@
-import * from '../constants/currencyPairs';
+import { FETCH_CURRENCY_PAIRS_REQUEST, FETCH_CURRENCY_PAIRS_SUCCESS } from '../constants/currencyPairs';
+import * as api from '../api/index';
 
-export const FetchCurrencyPairsRequest = () => ({
+export const fetchCurrencyPairsRequest = () => ({
   type: FETCH_CURRENCY_PAIRS_REQUEST,
 });
 
-export const FetchCurrencyPairsSuccess = (currencyPairs) => ({
+export const fetchCurrencyPairsSuccess = (currencyPairs) => ({
   type: FETCH_CURRENCY_PAIRS_SUCCESS,
   currencyPairs,
 });
 
-export const FetchCurrencyPairs = () => {
+export const fetchCurrencyPairs = () => {
   return (dispatch) => {
-    dispatch(FetchCurrencyPairsRequest);
+    dispatch(fetchCurrencyPairsRequest);
     return api.fetchCurrencyPairs()
       .then(response => response.json())
       .then(currencyPairs => {
-        dispatch(FetchCurrencyPairsSuccess(currencyPairs))
+        dispatch(fetchCurrencyPairsSuccess(currencyPairs))
       });
   }
 }
+
+
+window.fetchCurrencyPairs = fetchCurrencyPairs;

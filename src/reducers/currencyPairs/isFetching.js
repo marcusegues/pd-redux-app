@@ -1,6 +1,6 @@
 import { FETCH_CURRENCY_PAIRS_REQUEST, FETCH_CURRENCY_PAIRS_SUCCESS } from '../../constants/currencyPairs';
 
-const isFetching = (state, action) => {
+const isFetching = (state = false, action) => {
   switch (action.type) {
     case FETCH_CURRENCY_PAIRS_REQUEST:
       return true;

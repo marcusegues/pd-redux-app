@@ -1,61 +1,67 @@
-import * from '../constants/orders';
+import {
+  FETCH_ORDERS_REQUEST,
+  FETCH_ORDERS_SUCCESS,
+  SUBMIT_ORDER_REQUEST,
+  SUBMIT_ORDER_SUCCESS,
+  CANCEL_ORDER_REQUEST,
+  CANCEL_ORDER_SUCCESS} from '../constants/orders';
 
-export const FetchOrdersRequest = () => ({
+export const fetchOrdersRequest = () => ({
   type: FETCH_ORDERS_REQUEST,
 });
 
-export const FetchOrdersSuccess = (orders) => ({
+export const fetchOrdersSuccess = (orders) => ({
   type: FETCH_ORDERS_SUCCESS,
   orders,
 });
 
-export const FetchOrders = () => {
+export const fetchOrders = () => {
   return (dispatch) => {
-    dispatch(FetchOrdersRequest);
+    dispatch(fetchOrdersRequest);
     return api.fetchOrders()
       .then(response => response.json())
       .then(orders => {
-        dispatch(FetchOrdersSuccess(orders))
+        dispatch(fetchOrdersSuccess(orders))
       });
   }
 }
 
-export const SubmitOrderRequest = () => ({
+export const submitOrderRequest = () => ({
   type: SUBMIT_ORDER_REQUEST,
 });
 
-export const SubmitOrderSuccess = (order) => ({
+export const submitOrderSuccess = (order) => ({
   type: SUBMIT_ORDER_SUCCESS,
   order,
 });
 
-export const SubmitOrder = () => {
+export const submitOrder = () => {
   return (dispatch) => {
-    dispatch(SubmitOrderRequest);
+    dispatch(submitOrderRequest);
     return api.submitOrder()
       .then(response => response.json())
       .then(order => {
-        dispatch(SubmitOrderSuccess(order))
+        dispatch(submitOrderSuccess(order))
       });
   }
 }
 
-export const CancelOrderRequest = () => ({
+export const cancelOrderRequest = () => ({
   type: CANCEL_ORDER_REQUEST,
 });
 
-export const CancelOrderSuccess = (order) => ({
+export const cancelOrderSuccess = (order) => ({
   type: CANCEL_ORDER_SUCCESS,
   order,
 });
 
-export const CancelOrder = () => {
+export const cancelOrder = () => {
   return (dispatch) => {
-    dispatch(CancelOrderRequest);
+    dispatch(cancelOrderRequest);
     return api.cancelOrder()
       .then(response => response.json())
       .then(order => {
-        dispatch(CancelOrderSuccess(order))
+        dispatch(cancelOrderSuccess(order))
       });
   }
 }

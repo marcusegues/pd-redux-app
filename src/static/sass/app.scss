@@ -1,0 +1,30 @@
+.cp-row {
+  margin-bottom: 10px;
+  height: 75px;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header-row {
+  margin-bottom: 10px;
+  height: 40px;
+}
+
+.spinner__message {
+  font-size: 11px;
+}
+
+@media (min-width: 769px) {
+  .spinner__message {
+    font-size: 14px;
+  }
+
+  .cp-row {
+    margin-bottom: 20px;
+    height: 147px;
+  }
+}
