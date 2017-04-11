@@ -1,23 +1,28 @@
 import React from 'react';
-import classNames from 'classnames';
-import { Row, Col, Button, Form, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import { Col, Button, Form, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import './../static/sass/app.css';
+import moment from 'moment';
+import { BUY } from './../constants/util';
 
 class NewOrderForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       limit: this.props.initialPrice,
-      validUntil: new Date(),
+      validUntil: moment().format('YYYY-MM-DD'),
     }
     this.handleLimitChange = this.handleLimitChange.bind(this);
     this.handleValidUntilChange = this.handleValidUntilChange.bind(this);
+    this.handleSubmitOrder = this.handleSubmitOrder.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({
-      limit: nextProps.initialPrice,
-    })
+    // only update the input field with a new initial price if the type of order changed
+    if (this.props.type !== nextProps.type) {
+      this.setState({
+        limit: nextProps.initialPrice,
+      })
+    }
   }
 
   handleLimitChange(e) {
@@ -28,12 +33,24 @@ class NewOrderForm extends React.Component {
 
   handleValidUntilChange(e) {
     this.setState({
-      validUntil: e.target.value
+      validUntil: moment(e.target.value).format('YYYY-MM-DD')
     });
   }
 
+  handleSubmitOrder() {
+    const { ccyPair, submitOrder, type } = this.props
+    const order = JSON.stringify({
+      investmentCcy: type === BUY ? ccyPair.ccy1 : ccyPair.ccy2,
+      buy: type === BUY,
+      counterCcy: type === BUY ? ccyPair.ccy2 : ccyPair.ccy1,
+      limit: this.state.limit,
+      validUntil: this.state.validUntil,
+    });
+    submitOrder(order);
+  }
+
   render() {
-    const { submitOrder, cancelOrder, type, id } = this.props;
+    const { id } = this.props;
 
     return (
       <div>
@@ -51,13 +68,38 @@ class NewOrderForm extends React.Component {
               />
             </Col>
           </FormGroup>
+          <FormGroup controlId={`ValidUntil${id}`}>
+            <Col componentClass={ControlLabel} sm={2}>
+              Valid Until
+            </Col>
+            <Col sm={10}>
+              <FormControl
+                type="date"
+                value={this.state.validUntil}
+                onChange={this.handleValidUntilChange}
+              />
+            </Col>
+          </FormGroup>
+          <FormGroup>
+            <Col smOffset={2} sm={10}>
+              <Button
+                className="pull-right"
+                bsSize="xsmall"
+                bsStyle={'primary'}
+                onClick={this.handleSubmitOrder}
+              >
+                {'Submit Order'}
+              </Button>
+              <Button
+                className="pull-right"
+                bsSize="xsmall"
+                bsStyle={'danger'}
+              >
+                {'Cancel'}
+              </Button>
+            </Col>
+          </FormGroup>
         </Form>
-        <Button
-          bsSize="xsmall"
-          bsStyle={'primary'}
-        >
-          {'Buy'}
-        </Button>
       </div>
     );
   }

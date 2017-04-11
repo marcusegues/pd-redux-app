@@ -1,7 +1,5 @@
 import React from 'react';
-import classNames from 'classnames';
 import { Grid, Row, Col, Button } from 'react-bootstrap';
-import { Link } from 'react-router';
 import './../static/sass/app.css';
 import CurrencyPairRowItemContainer from './currencyPairRowItemContainer';
 import Spinner from './spinner';
@@ -17,7 +15,7 @@ class CurrencyPairsList extends React.Component {
   }
 
   handleFetchCurrencyPairs() {
-    this.props.fetchCurrencyPairs(this.props.lastReceivedId);
+    this.props.fetchCurrencyPairs();
   }
 
   render() {

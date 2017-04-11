@@ -18,7 +18,7 @@ const fetchOrdersSuccess = (orders) => ({
 
 export const fetchOrders = () => {
   return (dispatch) => {
-    dispatch(fetchOrdersRequest);
+    dispatch(fetchOrdersRequest());
     return api.fetchOrders()
       .then(response => response.json())
       .then(orders => {
@@ -36,12 +36,17 @@ const submitOrderSuccess = (order) => ({
   order,
 });
 
-export const submitOrder = () => {
+export const submitOrder = (order) => {
   return (dispatch) => {
-    dispatch(submitOrderRequest);
-    return api.submitOrder()
-      .then(response => response.json())
+    dispatch(submitOrderRequest());
+    return api.submitOrder(order)
+      .then(response => {
+        debugger
+        return response.json()
+      })
       .then(order => {
+        debugger;
+        console.log('success', order);
         dispatch(submitOrderSuccess(order))
       });
   }
@@ -58,7 +63,7 @@ const cancelOrderSuccess = (order) => ({
 
 export const cancelOrder = () => {
   return (dispatch) => {
-    dispatch(cancelOrderRequest);
+    dispatch(cancelOrderRequest());
     return api.cancelOrder()
       .then(response => response.json())
       .then(order => {

@@ -12,7 +12,7 @@ const fetchCurrencyPairsSuccess = (currencyPairs) => ({
 
 export const fetchCurrencyPairs = () => {
   return (dispatch) => {
-    dispatch(fetchCurrencyPairsRequest);
+    dispatch(fetchCurrencyPairsRequest());
     return api.fetchCurrencyPairs()
       .then(response => response.json())
       .then(currencyPairs => {

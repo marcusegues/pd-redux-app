@@ -1,7 +1,5 @@
 import React from 'react';
-import classNames from 'classnames';
-import { Row, Col, Button, Form, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
-import { Link } from 'react-router';
+import { Row, Col, Button } from 'react-bootstrap';
 import './../static/sass/app.css';
 import NewOrderFormContainer from './newOrderFormContainer';
 import { BUY, SELL } from './../constants/util';
@@ -13,17 +11,23 @@ class CurrencyPairRowItem extends React.Component {
       newOrderType: null,
     }
     this.handleNewOrder = this.handleNewOrder.bind(this);
+    this.handleCancelOrder = this.handleCancelOrder.bind(this);
   }
 
   handleNewOrder(e) {
     this.setState({
-      newOrderType: e.target.dataset.type
+      newOrderType: e.target.dataset.type,
+    });
+  }
+
+  handleCancelOrder() {
+    this.setState({
+      newOrderType: null,
     });
   }
 
   render() {
-    const { id, bid, ask } = this.props.currencyPair;
-    const { submitOrder, cancelOrder } = this.props;
+    const { id, bid, ask, ccyPair } = this.props.currencyPair;
 
     return (
       <Row className="show-grid cp-row flex-container-col">
@@ -57,8 +61,10 @@ class CurrencyPairRowItem extends React.Component {
             <Col xs={6} xsOffset={6}>
               <NewOrderFormContainer
                 id={id}
+                ccyPair={ccyPair}
                 type={this.state.newOrderType}
                 initialPrice={this.state.newOrderType === BUY ? ask : bid}
+                onCancelOrder={this.handleCancelOrder}
               />
             </Col>
           </Row> : null}

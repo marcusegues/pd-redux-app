@@ -2,7 +2,7 @@ import React from 'react'
 import './../static/sass/spinner.css'
 
 // Adapted from /* http://tobiasahlin.com/spinkit/ */
-export const Spinner = ({ message }) =>
+const Spinner = ({ message }) =>
   <div className="flex-container">
     <div className="spinner flex-container">
       <div className="bounce1"></div>
@@ -11,3 +11,5 @@ export const Spinner = ({ message }) =>
     </div>
     <div className="spinner__message">{message}</div>
   </div>
+
+export default Spinner;
