@@ -1,10 +1,12 @@
 import { connect } from 'react-redux';
-import CurrencyPairRowItem from './currencyPairRowItem';
+import NewOrderForm from './newOrderForm';
 import { submitOrder, cancelOrder } from '../actions/orders';
 
-const mapStateToProps = (state, { currencyPair }) => {
+const mapStateToProps = (state, { id, type, initialPrice}) => {
   return {
-    currencyPair,
+    id,
+    type,
+    initialPrice,
   }
 };
 
@@ -15,4 +17,4 @@ const mapDispatchToProps = dispatch => ({
 
 export default connect(
   mapStateToProps,
-)(CurrencyPairRowItem);
+)(NewOrderForm);

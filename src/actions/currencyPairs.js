@@ -1,11 +1,11 @@
 import { FETCH_CURRENCY_PAIRS_REQUEST, FETCH_CURRENCY_PAIRS_SUCCESS } from '../constants/currencyPairs';
 import * as api from '../api/index';
 
-export const fetchCurrencyPairsRequest = () => ({
+const fetchCurrencyPairsRequest = () => ({
   type: FETCH_CURRENCY_PAIRS_REQUEST,
 });
 
-export const fetchCurrencyPairsSuccess = (currencyPairs) => ({
+const fetchCurrencyPairsSuccess = (currencyPairs) => ({
   type: FETCH_CURRENCY_PAIRS_SUCCESS,
   currencyPairs,
 });

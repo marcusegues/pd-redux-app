@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { fetchCurrencyPairs } from './../actions/currencyPairs';
 import { getVisibleCurrencyPairs } from './../reducers/root';
-import MarketOverview from './marketOverview';
+import CurrencyPairsList from './currencyPairsList';
 
 const mapStateToProps = (state, { params }) => ({
   currencyPairs: getVisibleCurrencyPairs(state),
@@ -15,4 +15,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(MarketOverview);
+)(CurrencyPairsList);

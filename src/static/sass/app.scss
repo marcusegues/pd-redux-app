@@ -1,12 +1,16 @@
 .cp-row {
-  margin-bottom: 10px;
-  height: 75px;
+
 }
 
 .flex-container {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+.flex-container-col {
+  display: flex;
+  flex-direction: column;
 }
 
 .header-row {
@@ -18,13 +22,15 @@
   font-size: 11px;
 }
 
-@media (min-width: 769px) {
-  .spinner__message {
-    font-size: 14px;
+/* Override bootstrap CSS */
+@media (min-width: 992px) {
+  .container {
+    width: 100%;
   }
+}
 
-  .cp-row {
-    margin-bottom: 20px;
-    height: 147px;
+@media (min-width: 768px) {
+  .container {
+    width: 100%;
   }
 }

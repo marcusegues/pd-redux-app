@@ -5,12 +5,13 @@ import {
   SUBMIT_ORDER_SUCCESS,
   CANCEL_ORDER_REQUEST,
   CANCEL_ORDER_SUCCESS} from '../constants/orders';
+import * as api from '../api/index';
 
-export const fetchOrdersRequest = () => ({
+const fetchOrdersRequest = () => ({
   type: FETCH_ORDERS_REQUEST,
 });
 
-export const fetchOrdersSuccess = (orders) => ({
+const fetchOrdersSuccess = (orders) => ({
   type: FETCH_ORDERS_SUCCESS,
   orders,
 });
@@ -26,11 +27,11 @@ export const fetchOrders = () => {
   }
 }
 
-export const submitOrderRequest = () => ({
+const submitOrderRequest = () => ({
   type: SUBMIT_ORDER_REQUEST,
 });
 
-export const submitOrderSuccess = (order) => ({
+const submitOrderSuccess = (order) => ({
   type: SUBMIT_ORDER_SUCCESS,
   order,
 });
@@ -46,11 +47,11 @@ export const submitOrder = () => {
   }
 }
 
-export const cancelOrderRequest = () => ({
+const cancelOrderRequest = () => ({
   type: CANCEL_ORDER_REQUEST,
 });
 
-export const cancelOrderSuccess = (order) => ({
+const cancelOrderSuccess = (order) => ({
   type: CANCEL_ORDER_SUCCESS,
   order,
 });
