@@ -45,6 +45,17 @@ class CurrencyPairsList extends React.Component {
             </Button>
           </Col>
         </Row>
+        <Row className="show-grid cp-row flex-container">
+          <Col xs={2}>{"FX"}</Col>
+          <Col xs={3} className="bidColumn">{"Bid"}</Col>
+          <Col xs={3}>{"Ask"}</Col>
+          <Col xs={2}>
+
+          </Col>
+          <Col xs={2}>
+
+          </Col>
+        </Row>
         {cpList}
       </Grid>
     );

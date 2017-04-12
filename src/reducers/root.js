@@ -16,6 +16,6 @@ export const getVisibleCurrencyPairs = (state) => {
   return fromCurrencyPairs.getVisibleCurrencyPairs(state.currencyPairs);
 }
 
-export const getVisibleCurrentOrders = (state) => {
-  return fromOrders.getVisibleCurrentOrders(state.orders);
+export const getValidOrders = (state, location) => {
+  return fromOrders.getValidOrders(state.orders, location);
 }

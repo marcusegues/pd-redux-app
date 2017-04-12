@@ -13,13 +13,13 @@ const NavigationBar = () => (
     </Navbar.Header>
     <Navbar.Collapse>
       <Navbar.Text pullRight>
-        <NavigationLink path={OVERVIEW}>
-          Favorites
+        <NavigationLink path={ORDERS}>
+          {'Orders'}
         </NavigationLink>
       </Navbar.Text>
       <Navbar.Text pullRight>
-        <NavigationLink path={ORDERS}>
-          All Users
+        <NavigationLink path={OVERVIEW}>
+          {'Overview'}
         </NavigationLink>
       </Navbar.Text>
     </Navbar.Collapse>

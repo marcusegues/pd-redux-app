@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Button } from 'react-bootstrap';
+import { Grid, Row, Col, Button } from 'react-bootstrap';
 import './../static/sass/app.css';
 import NewOrderFormContainer from './newOrderFormContainer';
 import { BUY, SELL } from './../constants/util';
@@ -31,43 +31,45 @@ class CurrencyPairRowItem extends React.Component {
 
     return (
       <Row className="show-grid cp-row flex-container-col">
-        <Row className="show-grid cp-row flex-container">
-          <Col xs={2}>{id}</Col>
-          <Col xs={3}>{bid}</Col>
-          <Col xs={3}>{ask}</Col>
-          <Col xs={2}>
-            <Button
-              bsSize="xsmall"
-              bsStyle={'primary'}
-              data-type={BUY}
-              onClick={this.handleNewOrder}
-            >
-              {'Buy'}
-            </Button>
-          </Col>
-          <Col xs={2}>
-            <Button
-              bsSize="xsmall"
-              bsStyle={'primary'}
-              data-type={SELL}
-              onClick={this.handleNewOrder}
-            >
-              {'Sell'}
-            </Button>
-          </Col>
-        </Row>
-        {this.state.newOrderType ?
-          <Row className="show-grid cp-row flex-container">
-            <Col xs={6} xsOffset={6}>
-              <NewOrderFormContainer
-                id={id}
-                ccyPair={ccyPair}
-                type={this.state.newOrderType}
-                initialPrice={this.state.newOrderType === BUY ? ask : bid}
-                handleCloseNewOrderForm={this.handleCloseNewOrderForm}
-              />
+        <Grid>
+          <Row className="show-grid flex-container">
+            <Col xs={2}>{id}</Col>
+            <Col xs={3} className="bidColumn">{bid}</Col>
+            <Col xs={3}>{ask}</Col>
+            <Col xs={2}>
+              <Button
+                bsSize="xsmall"
+                bsStyle={'primary'}
+                data-type={BUY}
+                onClick={this.handleNewOrder}
+              >
+                {'Buy'}
+              </Button>
             </Col>
-          </Row> : null}
+            <Col xs={2}>
+              <Button
+                bsSize="xsmall"
+                bsStyle={'primary'}
+                data-type={SELL}
+                onClick={this.handleNewOrder}
+              >
+                {'Sell'}
+              </Button>
+            </Col>
+          </Row>
+          {this.state.newOrderType ?
+            <Row className="show-grid flex-container">
+              <Col xs={12}>
+                <NewOrderFormContainer
+                  id={id}
+                  ccyPair={ccyPair}
+                  type={this.state.newOrderType}
+                  initialPrice={this.state.newOrderType === BUY ? ask : bid}
+                  handleCloseNewOrderForm={this.handleCloseNewOrderForm}
+                />
+              </Col>
+            </Row> : null}
+        </Grid>
       </Row>
     );
   }

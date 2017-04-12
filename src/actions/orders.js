@@ -45,7 +45,6 @@ export const submitOrder = (order, id) => {
         return response.json()
       })
       .then(order => {
-        console.log('success', order);
         dispatch(submitOrderSuccess(order, id))
       });
   }

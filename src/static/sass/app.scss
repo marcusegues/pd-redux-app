@@ -1,5 +1,9 @@
-.cp-row {
+body {
+  font-size: 12px;
+}
 
+.cp-row {
+  padding: 2px;
 }
 
 .flex-container {
@@ -22,6 +26,34 @@
   font-size: 11px;
 }
 
+.order-form-inputs {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 5px 10px 0;
+
+  > .form-group:nth-child(1) {
+    margin: 0 20px 0 0;
+  }
+}
+
+.newOrderForm {
+  border: 1px solid rgba(55, 55, 55, 0.5);
+  border-radius: 5px;
+}
+
+.newOrderForm .submitOrderButton, .cancelOrderButton {
+  margin: 0 5px 5px 5px;
+}
+
+.bidColumn {
+  position: relative;
+  left: 15px;
+}
+
+.container {
+  margin: 0;
+}
+
 /* Override bootstrap CSS */
 @media (min-width: 992px) {
   .container {
@@ -30,7 +62,19 @@
 }
 
 @media (min-width: 768px) {
-  .container {
+  body {
+    font-size: 14px;
+  }
+
+  .container, .form-inline .form-control {
     width: 100%;
   }
+
+  .order-form-inputs {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+
 }

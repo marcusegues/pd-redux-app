@@ -60,49 +60,53 @@ class NewOrderForm extends React.Component {
     return (
       <div>
         <Form horizontal>
-          <FormGroup controlId={`Limit${id}`}>
-            <Col componentClass={ControlLabel} sm={2}>
-              Limit
-            </Col>
-            <Col sm={10}>
-              <FormControl
-                type="number"
-                step="0.0001"
-                value={this.state.limit}
-                onChange={this.handleLimitChange}
-              />
-            </Col>
-          </FormGroup>
-          <FormGroup controlId={`ValidUntil${id}`}>
-            <Col componentClass={ControlLabel} sm={2}>
-              Valid Until
-            </Col>
-            <Col sm={10}>
-              <FormControl
-                type="date"
-                value={this.state.validUntil}
-                onChange={this.handleValidUntilChange}
-              />
-            </Col>
-          </FormGroup>
           <FormGroup>
-            <Col smOffset={2} sm={10}>
-              <Button
-                className="pull-right"
-                bsSize="xsmall"
-                bsStyle={'primary'}
-                onClick={this.handleSubmitOrder}
-              >
-                {'Submit Order'}
-              </Button>
-              <Button
-                className="pull-right"
-                bsSize="xsmall"
-                bsStyle={'danger'}
-                onClick={this.handleCloseNewOrderForm}
-              >
-                {'Cancel'}
-              </Button>
+            <Col sm={6} smOffset={6} className="newOrderForm">
+              <FormGroup controlId={`Limit${id}`}>
+                <Col componentClass={ControlLabel} sm={2}>
+                  Limit
+                </Col>
+                <Col xs={10} sm={10}>
+                  <FormControl
+                    type="number"
+                    step="0.0001"
+                    value={this.state.limit}
+                    onChange={this.handleLimitChange}
+                  />
+                </Col>
+              </FormGroup>
+              <FormGroup controlId={`ValidUntil${id}`}>
+                <Col componentClass={ControlLabel} sm={2}>
+                  Valid Until
+                </Col>
+                <Col xs={10} sm={10}>
+                  <FormControl
+                    type="date"
+                    value={this.state.validUntil}
+                    onChange={this.handleValidUntilChange}
+                  />
+                </Col>
+              </FormGroup>
+              <FormGroup>
+                <Col smOffset={2} sm={10}>
+                  <Button
+                    className="pull-right submitOrderButton"
+                    bsSize="xsmall"
+                    bsStyle={'primary'}
+                    onClick={this.handleSubmitOrder}
+                  >
+                    {'Submit Order'}
+                  </Button>
+                  <Button
+                    className="pull-right cancelOrderButton"
+                    bsSize="xsmall"
+                    bsStyle={'danger'}
+                    onClick={this.handleCloseNewOrderForm}
+                  >
+                    {'Cancel'}
+                  </Button>
+                </Col>
+              </FormGroup>
             </Col>
           </FormGroup>
         </Form>

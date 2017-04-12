@@ -1,15 +1,9 @@
 import React from 'react';
-import { Grid, Row, Col, Button } from 'react-bootstrap';
+import { Grid, Row, Col } from 'react-bootstrap';
 import './../static/sass/app.css';
-import CurrencyPairRowItemContainer from './currencyPairRowItemContainer';
 import OrderRowItem from './orderRowItem';
-import Spinner from './spinner';
 
-class CurrentOrdersList extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
+class OrdersList extends React.Component {
   render() {
     const { orders } = this.props;
     const orderList = orders.map(order =>
@@ -41,4 +35,4 @@ class CurrentOrdersList extends React.Component {
   }
 }
 
-export default CurrentOrdersList;
+export default OrdersList;

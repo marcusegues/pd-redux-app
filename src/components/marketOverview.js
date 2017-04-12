@@ -1,19 +1,18 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 import CurrencyPairsListContainer from './currencyPairsListContainer';
-import CurrentOrdersListContainer from './currentOrdersListContainer';
+import OrdersListContainer from './ordersListContainer';
 import './../static/sass/app.css';
-import { Spinner } from './spinner';
 
 const MarketOverview = () => {
   return (
     <Grid>
       <Row className="show-grid">
-        <Col xs={6}>
+        <Col xs={12} sm={6}>
           <CurrencyPairsListContainer />
         </Col>
-        <Col xs={6}>
-          <CurrentOrdersListContainer />
+        <Col xs={12} sm={6}>
+          <OrdersListContainer />
         </Col>
       </Row>
     </Grid>
