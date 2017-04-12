@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import { Grid, Row, Col, Button } from 'react-bootstrap';
 import './../static/sass/app.css';
 import NewOrderFormContainer from './newOrderFormContainer';
@@ -30,10 +31,20 @@ class CurrencyPairRowItem extends React.Component {
     const { id, bid, ask, ccyPair } = this.props.currencyPair;
 
     return (
-      <Row className="show-grid data-row flex-container-col">
+      <Row className="show-grid flex-container-col">
         <Grid>
-          <Row className="show-grid flex-container">
-            <Col xs={2}>{id}</Col>
+          <Row className="show-grid data-row flex-container">
+            <Col xs={2}>
+              <Link
+                to={`currencies/${id.toLowerCase()}`}
+                activeStyle={{
+                  textDecoration: 'none',
+                  color: 'black',
+                }}
+              >
+                {id}
+              </Link>
+            </Col>
             <Col xs={3} className="bidColumn">{bid}</Col>
             <Col xs={3}>{ask}</Col>
             <Col xs={2}>

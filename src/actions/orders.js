@@ -11,18 +11,19 @@ const fetchOrdersRequest = () => ({
   type: FETCH_ORDERS_REQUEST,
 });
 
-const fetchOrdersSuccess = (orders) => ({
+const fetchOrdersSuccess = (orders, currencyPairsIds) => ({
   type: FETCH_ORDERS_SUCCESS,
   orders,
+  currencyPairsIds
 });
 
 export const fetchOrders = () => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
     dispatch(fetchOrdersRequest());
     return api.fetchOrders()
       .then(response => response.json())
       .then(orders => {
-        dispatch(fetchOrdersSuccess(orders))
+        dispatch(fetchOrdersSuccess(orders, getState().currencyPairs.allIds))
       });
   }
 }

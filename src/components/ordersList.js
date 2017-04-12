@@ -8,14 +8,30 @@ class OrdersList extends React.Component {
   constructor(props) {
     super(props);
     this.handleFetchOrders = this.handleFetchOrders.bind(this);
+    this.handleFetchCurrencyPairs = this.handleFetchCurrencyPairs.bind(this);
   }
 
   componentDidMount() {
-    this.handleFetchOrders();
+    const { currencyPairsFetched } = this.props;
+    console.log("Orders List Mounted");
+    if (!currencyPairsFetched) {
+      this.handleFetchCurrencyPairs().then(this.handleFetchOrders());
+    } else {
+      this.handleFetchOrders();
+    }
+  }
+
+  componentWillUnmount() {
+    console.log("Orders List Will Unmount");
   }
 
   handleFetchOrders() {
-    this.props.fetchOrders();
+    console.log("Orders List will fetch orders")
+    return this.props.fetchOrders();
+  }
+
+  handleFetchCurrencyPairs() {
+    return this.props.fetchCurrencyPairs();
   }
 
   render() {
@@ -44,10 +60,10 @@ class OrdersList extends React.Component {
             </Button>
           </Col>
         </Row>
-        <Row className="show-grid header-row flex-container">
+        <Row className="show-grid data-row header-row flex-container">
           <Col xs={12}>{title}</Col>
         </Row>
-        <Row className="show-grid header-row flex-container">
+        <Row className="show-grid data-row header-row flex-container">
           <Col xs={2}>
             Type
           </Col>

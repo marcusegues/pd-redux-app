@@ -11,12 +11,7 @@ class CurrencyPairsList extends React.Component {
   }
 
   componentDidMount() {
-    console.log("Currency Pairs List Mounted");
     this.handleFetchCurrencyPairs();
-  }
-
-  componentWillUnmount() {
-    console.log("Currency Pairs List Unmounting");
   }
 
   handleFetchCurrencyPairs() {
