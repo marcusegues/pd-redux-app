@@ -3,7 +3,6 @@ import { Grid, Row, Col, Button } from 'react-bootstrap';
 import './../static/sass/app.css';
 import OrderRowItem from './orderRowItem';
 import Spinner from './spinner';
-import { OVERVIEW } from './../constants/routes';
 
 class OrdersList extends React.Component {
   constructor(props) {
@@ -12,12 +11,7 @@ class OrdersList extends React.Component {
   }
 
   componentDidMount() {
-    console.log("Orders List Mounted");
     this.handleFetchOrders();
-  }
-
-  componentWillUnmount() {
-    console.log("Orders List Unmounting");
   }
 
   handleFetchOrders() {
@@ -25,7 +19,7 @@ class OrdersList extends React.Component {
   }
 
   render() {
-    const { orders, isFetching, path } = this.props;
+    const { orders, isFetching, title } = this.props;
     const orderList = orders.map(order =>
       <OrderRowItem
         key={order.id}
@@ -51,7 +45,7 @@ class OrdersList extends React.Component {
           </Col>
         </Row>
         <Row className="show-grid header-row flex-container">
-          <Col xs={12}>{path === OVERVIEW ? "Outstanding Valid Orders" : "All Orders"}</Col>
+          <Col xs={12}>{title}</Col>
         </Row>
         <Row className="show-grid header-row flex-container">
           <Col xs={2}>

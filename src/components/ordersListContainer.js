@@ -2,13 +2,15 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import OrdersList from './ordersList';
 import { getValidOrders } from './../reducers/root';
+import { getOrdersByCurrencyId } from './../reducers/root';
+import { getOrdersListTitle } from './../util/util';
 import { fetchOrders } from './../actions/orders';
 
-const mapStateToProps = (state, { location }) => {
+const mapStateToProps = (state, { location, params }) => {
   return {
-    orders: getValidOrders(state, location.pathname),
+    orders: params.currency ? getOrdersByCurrencyId(state, params.currency.toUpperCase()) : getValidOrders(state, location.pathname),
     isFetching: state.orders.isFetching,
-    path: location.pathname,
+    title: getOrdersListTitle(location.pathname, params),
   }
 };
 

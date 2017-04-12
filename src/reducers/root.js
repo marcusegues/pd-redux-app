@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux';
-import currencyPairs from './currencyPairs/index.js';
-import orders from './orders/index.js';
+import currencyPairs from './currencyPairs/index';
+import orders from './orders/index';
+import userInterface from './userInterface/index';
 import * as fromCurrencyPairs from './currencyPairs/index';
 import * as fromOrders from './orders/index';
 
 const root = combineReducers({
   currencyPairs,
-  orders
+  orders,
+  userInterface,
 });
 
 export default root;
@@ -18,4 +20,14 @@ export const getVisibleCurrencyPairs = (state) => {
 
 export const getValidOrders = (state, location) => {
   return fromOrders.getValidOrders(state.orders, location);
+}
+
+export const getOrdersByCurrencyId = (state, currencyId) => {
+  let orderIds = [];
+  if (state.userInterface.currencyPairsFetched) {
+    orderIds = fromCurrencyPairs.getOrdersById(state.currencyPairs, currencyId);
+    return fromOrders.getOrdersByOrderIds(state.orders, orderIds);
+  } else {
+    return fromOrders.getOrdersByCurrencyId(state.orders, currencyId);
+  }
 }

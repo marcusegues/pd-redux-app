@@ -5,6 +5,7 @@ import { Router, Route, Redirect, browserHistory } from 'react-router';
 import App from './App';
 import MarketOverview from './marketOverview';
 import OrdersListContainer from './ordersListContainer';
+import CurrencyView from './currencyView';
 
 const Root = ({ store }) => (
   <Provider store={store}>
@@ -13,6 +14,7 @@ const Root = ({ store }) => (
         <Redirect from="/" to="/overview" />
         <Route path="/overview" component={MarketOverview} />
         <Route path="/orders" component={OrdersListContainer} />
+        <Route path='/currencies/:currency' component={CurrencyView} />
       </Route>
     </Router>
   </Provider>

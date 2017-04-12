@@ -15,3 +15,7 @@ export default currencyPairs;
 export const getVisibleCurrencyPairs = (state) => {
   return state.allIds.map(id => state.byId[id]);
 }
+
+export const getOrdersById = (state, id) => {
+  return state.byId[id] ? state.byId[id].orders : [];
+}
