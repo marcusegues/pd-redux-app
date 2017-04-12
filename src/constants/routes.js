@@ -1,2 +1,2 @@
-export const OVERVIEW = 'overview';
-export const ORDERS = 'orders';
+export const OVERVIEW = '/overview';
+export const ORDERS = '/orders';

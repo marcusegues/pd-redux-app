@@ -13,9 +13,12 @@ body {
   display: flex;
   flex-direction: column; }
 
-.header-row {
+.status-row {
   margin-bottom: 10px;
   height: 40px; }
+
+.header-row {
+  font-weight: 800; }
 
 .spinner__message {
   font-size: 11px; }
@@ -30,10 +33,15 @@ body {
 
 .newOrderForm {
   border: 1px solid rgba(55, 55, 55, 0.5);
-  border-radius: 5px; }
+  border-radius: 5px;
+  margin-top: 10px; }
 
 .newOrderForm .submitOrderButton, .cancelOrderButton {
   margin: 0 5px 5px 5px; }
+
+.newOrderTitle {
+  padding: 15px;
+  font-weight: 800; }
 
 .bidColumn {
   position: relative;

@@ -52,21 +52,27 @@ class NewOrderForm extends React.Component {
       validUntil: this.state.validUntil,
     });
     submitOrder(order, id);
+    this.props.handleCloseNewOrderForm();
   }
 
   render() {
-    const { id } = this.props;
+    const { id, type } = this.props;
 
     return (
       <div>
         <Form horizontal>
           <FormGroup>
-            <Col sm={6} smOffset={6} className="newOrderForm">
+            <Col xs={12} sm={8} smOffset={4} className="newOrderForm">
+              <FormGroup controlId="NewOrderTitle">
+                <Col xs={12} className="newOrderTitle">
+                  {`${type === BUY ? "Buy" : "Sell"} ${id}`}
+                </Col>
+              </FormGroup>
               <FormGroup controlId={`Limit${id}`}>
-                <Col componentClass={ControlLabel} sm={2}>
+                <Col componentClass={ControlLabel} xs={3} sm={2}>
                   Limit
                 </Col>
-                <Col xs={10} sm={10}>
+                <Col xs={9} sm={10}>
                   <FormControl
                     type="number"
                     step="0.0001"
@@ -76,10 +82,10 @@ class NewOrderForm extends React.Component {
                 </Col>
               </FormGroup>
               <FormGroup controlId={`ValidUntil${id}`}>
-                <Col componentClass={ControlLabel} sm={2}>
+                <Col componentClass={ControlLabel} xs={3} sm={2}>
                   Valid Until
                 </Col>
-                <Col xs={10} sm={10}>
+                <Col xs={9} sm={10}>
                   <FormControl
                     type="date"
                     value={this.state.validUntil}

@@ -4,7 +4,7 @@ import { Row, Col } from 'react-bootstrap';
 
 const OrderRowItem = ({ order }) => {
   return (
-    <Row className="show-grid cp-row flex-container">
+    <Row className="show-grid flex-container">
       <Col xs={3}>{order.buy ? BUY : SELL}</Col>
       <Col xs={3}>{order.currencyId}</Col>
       <Col xs={3}>{order.limit}</Col>

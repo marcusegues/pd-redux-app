@@ -11,7 +11,12 @@ class CurrencyPairsList extends React.Component {
   }
 
   componentDidMount() {
+    console.log("Currency Pairs List Mounted");
     this.handleFetchCurrencyPairs();
+  }
+
+  componentWillUnmount() {
+    console.log("Currency Pairs List Unmounting");
   }
 
   handleFetchCurrencyPairs() {
@@ -30,9 +35,9 @@ class CurrencyPairsList extends React.Component {
 
     return (
       <Grid className="currencyPairs">
-        <Row className="show-grid header-row flex-container">
+        <Row className="show-grid status-row flex-container">
           <Col xs={6}>
-            {isFetching ? <Spinner message={"Fetching data..."} /> : null}
+            {isFetching ? <Spinner message={"Fetching exchange rates..."} /> : null}
           </Col>
           <Col xs={6}>
             <Button
@@ -41,11 +46,14 @@ class CurrencyPairsList extends React.Component {
               onClick={this.handleFetchCurrencyPairs}
               disabled={this.props.isFetching ? true : false}
             >
-              {'Refresh data'}
+              {'Refresh Exchange Rates'}
             </Button>
           </Col>
         </Row>
-        <Row className="show-grid cp-row flex-container">
+        <Row className="show-grid cp-row header-row flex-container">
+          <Col xs={12}>{"Exchange Rates"}</Col>
+        </Row>
+        <Row className="show-grid cp-row header-row flex-container">
           <Col xs={2}>{"FX"}</Col>
           <Col xs={3} className="bidColumn">{"Bid"}</Col>
           <Col xs={3}>{"Ask"}</Col>

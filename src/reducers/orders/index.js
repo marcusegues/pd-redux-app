@@ -4,6 +4,7 @@ import allIds from './allIds';
 import isSubmitting from './isSubmitting';
 import isCancelling from './isCancelling';
 import isFetching from './isFetching';
+import { OVERVIEW } from './../../constants/routes';
 import moment from 'moment';
 
 const orders = combineReducers({
@@ -24,7 +25,7 @@ export const getAllOrders = (state) => {
 export const getValidOrders = (state, location) => {
   const allOrders = getAllOrders(state);
   switch (location) {
-    case '/overview':
+    case OVERVIEW:
       return allOrders.filter(order => moment(order.validUntil) >= moment(moment().format("YYYY-MM-DD")));
     default:
       return allOrders;
