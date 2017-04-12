@@ -30,7 +30,7 @@ class CurrencyPairRowItem extends React.Component {
     const { id, bid, ask, ccyPair } = this.props.currencyPair;
 
     return (
-      <Row className="show-grid cp-row flex-container-col">
+      <Row className="show-grid data-row flex-container-col">
         <Grid>
           <Row className="show-grid flex-container">
             <Col xs={2}>{id}</Col>

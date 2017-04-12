@@ -1,8 +1,8 @@
 body {
   font-size: 12px; }
 
-.cp-row {
-  padding: 2px; }
+.data-row {
+  height: 30px; }
 
 .flex-container {
   display: flex;

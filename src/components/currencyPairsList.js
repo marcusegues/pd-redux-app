@@ -50,10 +50,10 @@ class CurrencyPairsList extends React.Component {
             </Button>
           </Col>
         </Row>
-        <Row className="show-grid cp-row header-row flex-container">
+        <Row className="show-grid data-row header-row flex-container">
           <Col xs={12}>{"Exchange Rates"}</Col>
         </Row>
-        <Row className="show-grid cp-row header-row flex-container">
+        <Row className="show-grid data-row header-row flex-container">
           <Col xs={2}>{"FX"}</Col>
           <Col xs={3} className="bidColumn">{"Bid"}</Col>
           <Col xs={3}>{"Ask"}</Col>

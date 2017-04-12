@@ -54,7 +54,7 @@ class OrdersList extends React.Component {
           <Col xs={12}>{path === OVERVIEW ? "Outstanding Valid Orders" : "All Orders"}</Col>
         </Row>
         <Row className="show-grid header-row flex-container">
-          <Col xs={3}>
+          <Col xs={2}>
             Type
           </Col>
           <Col xs={3}>
@@ -63,7 +63,7 @@ class OrdersList extends React.Component {
           <Col xs={3}>
             Limit
           </Col>
-          <Col xs={3}>
+          <Col xs={4}>
             Valid Until
           </Col>
         </Row>
