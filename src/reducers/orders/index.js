@@ -14,3 +14,8 @@ const orders = combineReducers({
 });
 
 export default orders;
+
+// Selectors
+export const getVisibleCurrentOrders = (state) => {
+  return state.allIds.map(id => state.byId[id]);
+}

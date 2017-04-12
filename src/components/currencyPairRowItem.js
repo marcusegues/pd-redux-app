@@ -11,7 +11,7 @@ class CurrencyPairRowItem extends React.Component {
       newOrderType: null,
     }
     this.handleNewOrder = this.handleNewOrder.bind(this);
-    this.handleCancelOrder = this.handleCancelOrder.bind(this);
+    this.handleCloseNewOrderForm = this.handleCloseNewOrderForm.bind(this);
   }
 
   handleNewOrder(e) {
@@ -20,7 +20,7 @@ class CurrencyPairRowItem extends React.Component {
     });
   }
 
-  handleCancelOrder() {
+  handleCloseNewOrderForm() {
     this.setState({
       newOrderType: null,
     });
@@ -64,7 +64,7 @@ class CurrencyPairRowItem extends React.Component {
                 ccyPair={ccyPair}
                 type={this.state.newOrderType}
                 initialPrice={this.state.newOrderType === BUY ? ask : bid}
-                onCancelOrder={this.handleCancelOrder}
+                handleCloseNewOrderForm={this.handleCloseNewOrderForm}
               />
             </Col>
           </Row> : null}

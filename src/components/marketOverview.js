@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 import CurrencyPairsListContainer from './currencyPairsListContainer';
+import CurrentOrdersListContainer from './currentOrdersListContainer';
 import './../static/sass/app.css';
 import { Spinner } from './spinner';
 
@@ -12,7 +13,7 @@ const MarketOverview = () => {
           <CurrencyPairsListContainer />
         </Col>
         <Col xs={6}>
-          <CurrencyPairsListContainer />
+          <CurrentOrdersListContainer />
         </Col>
       </Row>
     </Grid>

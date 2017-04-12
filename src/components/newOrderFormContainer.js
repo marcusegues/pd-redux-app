@@ -2,13 +2,13 @@ import { connect } from 'react-redux';
 import NewOrderForm from './newOrderForm';
 import { submitOrder, cancelOrder } from '../actions/orders';
 
-const mapStateToProps = (state, { id, ccyPair, type, initialPrice, handleCancelOrder }) => {
+const mapStateToProps = (state, { id, ccyPair, type, initialPrice, handleCloseNewOrderForm }) => {
   return {
     id,
     ccyPair,
     type,
     initialPrice,
-    handleCancelOrder,
+    handleCloseNewOrderForm,
   }
 };
 

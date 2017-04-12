@@ -14,6 +14,7 @@ class NewOrderForm extends React.Component {
     this.handleLimitChange = this.handleLimitChange.bind(this);
     this.handleValidUntilChange = this.handleValidUntilChange.bind(this);
     this.handleSubmitOrder = this.handleSubmitOrder.bind(this);
+    this.handleCloseNewOrderForm = this.handleCloseNewOrderForm.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -35,6 +36,10 @@ class NewOrderForm extends React.Component {
     this.setState({
       validUntil: moment(e.target.value).format('YYYY-MM-DD')
     });
+  }
+
+  handleCloseNewOrderForm() {
+    this.props.handleCloseNewOrderForm();
   }
 
   handleSubmitOrder() {
@@ -94,6 +99,7 @@ class NewOrderForm extends React.Component {
                 className="pull-right"
                 bsSize="xsmall"
                 bsStyle={'danger'}
+                onClick={this.handleCloseNewOrderForm}
               >
                 {'Cancel'}
               </Button>
