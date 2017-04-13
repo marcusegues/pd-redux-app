@@ -10,11 +10,8 @@ class CurrencyPairsList extends React.Component {
     this.handleFetchCurrencyPairs = this.handleFetchCurrencyPairs.bind(this);
   }
 
-  componentDidMount() {
-    this.handleFetchCurrencyPairs();
-  }
-
   handleFetchCurrencyPairs() {
+    console.log("fetching from currencypairslist");
     this.props.fetchCurrencyPairs();
   }
 

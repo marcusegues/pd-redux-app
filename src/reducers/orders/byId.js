@@ -4,10 +4,7 @@ const getIdFromOrder = (currencyPairsIds, order) => {
   // Assumption: backend provides only one version of the currency pair to the frontend
   const ccyPair1 = order.counterCcy + order.investmentCcy;
   const ccyPair2 = order.investmentCcy + order.counterCcy;
-  const ret = ~currencyPairsIds.indexOf(ccyPair1) ? ccyPair1 : ccyPair2;
-  console.log(ret)
-  debugger;
-  return ret;
+  return ~currencyPairsIds.indexOf(ccyPair1) ? ccyPair1 : ccyPair2;
 }
 
 const byId = (state = {}, action) => {
@@ -21,10 +18,8 @@ const byId = (state = {}, action) => {
       }
       return nextState;
     case FETCH_ORDERS_SUCCESS:
-      debugger;
       nextState = {};
       action.orders.forEach(order => {
-        debugger;
         const id = getIdFromOrder(action.currencyPairsIds, order);
         nextState[order.id] = {
           ...order,

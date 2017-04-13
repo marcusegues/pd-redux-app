@@ -3,6 +3,7 @@ import { Grid, Row, Col, Button } from 'react-bootstrap';
 import './../static/sass/app.css';
 import OrderRowItem from './orderRowItem';
 import Spinner from './spinner';
+import { OVERVIEW } from './../constants/routes';
 
 class OrdersList extends React.Component {
   constructor(props) {
@@ -12,12 +13,15 @@ class OrdersList extends React.Component {
   }
 
   componentDidMount() {
-    const { currencyPairsFetched } = this.props;
-    console.log("Orders List Mounted");
-    if (!currencyPairsFetched) {
-      this.handleFetchCurrencyPairs().then(this.handleFetchOrders());
-    } else {
-      this.handleFetchOrders();
+    const { currencyPairsFetched, path } = this.props;
+    console.log("Orders list did mount")
+    if (path !== OVERVIEW) {
+      if (!currencyPairsFetched) {
+        this.handleFetchCurrencyPairs().then(this.handleFetchOrders());
+      } else {
+        console.log("now about to fetch more orders")
+        this.handleFetchOrders();
+      }
     }
   }
 
@@ -26,7 +30,6 @@ class OrdersList extends React.Component {
   }
 
   handleFetchOrders() {
-    console.log("Orders List will fetch orders")
     return this.props.fetchOrders();
   }
 
@@ -36,6 +39,17 @@ class OrdersList extends React.Component {
 
   render() {
     const { orders, isFetching, title } = this.props;
+    var obj = {};
+    var arr = [];
+    orders.forEach(o => {
+      if (!obj[o.id]) {
+        obj[o.id] = true;
+      } else {
+        arr.push(o)
+      }
+    });
+    console.log("orders", orders)
+    console.log("duplicates", arr)
     const orderList = orders.map(order =>
       <OrderRowItem
         key={order.id}

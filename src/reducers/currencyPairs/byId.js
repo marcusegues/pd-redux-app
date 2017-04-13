@@ -29,10 +29,11 @@ const currencyPair = (state = {}, action) => {
 
 const byId = (state = {}, action) => {
   const nextState = {...state};
+  let id;
   switch (action.type) {
     case FETCH_CURRENCY_PAIRS_SUCCESS:
       action.currencyPairs.forEach(cp => {
-        const id = newIdFromCurrencyPair(cp);
+        id = newIdFromCurrencyPair(cp);
         action = {
           ...action,
           cp,
@@ -46,7 +47,10 @@ const byId = (state = {}, action) => {
       return nextState;
     case FETCH_ORDERS_SUCCESS:
       action.orders.forEach(order => {
-        nextState[getIdFromOrder(state, order)].orders.push(order.id);
+        id = getIdFromOrder(state, order);
+        let newOrders = new Set([...nextState[id].orders]);
+        newOrders.add(order.id);
+        nextState[id].orders = [...newOrders];
       })
       return nextState;
     default:
