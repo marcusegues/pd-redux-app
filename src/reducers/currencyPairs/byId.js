@@ -1,5 +1,5 @@
 import { FETCH_CURRENCY_PAIRS_SUCCESS } from '../../constants/currencyPairs';
-import { SUBMIT_ORDER_SUCCESS, FETCH_ORDERS_SUCCESS } from '../../constants/orders';
+import { SUBMIT_ORDER_SUCCESS, FETCH_ORDERS_SUCCESS, CANCEL_ORDER_SUCCESS } from '../../constants/orders';
 import { newIdFromCurrencyPair } from '../../util/util';
 
 const getIdFromOrder = (state, order) => {
@@ -52,6 +52,11 @@ const byId = (state = {}, action) => {
         newOrders.add(order.id);
         nextState[id].orders = [...newOrders];
       })
+      return nextState;
+    case CANCEL_ORDER_SUCCESS:
+      id = action.order.currencyId;
+      let index = nextState[id].orders.indexOf(action.order.id);
+      nextState[id].orders = [...nextState[id].orders.slice(0, index), ...nextState[id].orders.slice(index+1)];
       return nextState;
     default:
       return state;

@@ -1,4 +1,5 @@
-import { SUBMIT_ORDER_SUCCESS, FETCH_ORDERS_SUCCESS } from '../../constants/orders';
+import { SUBMIT_ORDER_SUCCESS, FETCH_ORDERS_SUCCESS, CANCEL_ORDER_SUCCESS } from '../../constants/orders';
+import omit from 'lodash/omit';
 
 const getIdFromOrder = (currencyPairsIds, order) => {
   // Assumption: backend provides only one version of the currency pair to the frontend
@@ -14,9 +15,10 @@ const byId = (state = {}, action) => {
       nextState[action.order.id] = {
         ...action.order,
         currencyId: action.id,
-        fulfilled: true,
       }
       return nextState;
+    case CANCEL_ORDER_SUCCESS:
+      return omit(state, [action.order.id]);
     case FETCH_ORDERS_SUCCESS:
       nextState = {};
       action.orders.forEach(order => {
@@ -24,7 +26,6 @@ const byId = (state = {}, action) => {
         nextState[order.id] = {
           ...order,
           currencyId: id,
-          fulfilled: true,
         }
       })
       return nextState;

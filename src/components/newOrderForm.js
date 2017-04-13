@@ -44,13 +44,13 @@ class NewOrderForm extends React.Component {
 
   handleSubmitOrder() {
     const { ccyPair, submitOrder, type, id } = this.props
-    const order = JSON.stringify({
+    const order = {
       investmentCcy: type === BUY ? ccyPair.ccy1 : ccyPair.ccy2,
       buy: type === BUY,
       counterCcy: type === BUY ? ccyPair.ccy2 : ccyPair.ccy1,
       limit: this.state.limit,
       validUntil: this.state.validUntil,
-    });
+    };
     submitOrder(order, id);
     this.props.handleCloseNewOrderForm();
   }

@@ -4,7 +4,7 @@ import OrdersList from './ordersList';
 import { getValidOrders } from './../reducers/root';
 import { getOrdersByCurrencyId } from './../reducers/root';
 import { getOrdersListTitle } from './../util/util';
-import { fetchOrders } from './../actions/orders';
+import { fetchOrders, cancelOrder } from './../actions/orders';
 import { fetchCurrencyPairs } from './../actions/currencyPairs';
 
 const mapStateToProps = (state, { location, params }) => {
@@ -21,6 +21,7 @@ const mapStateToProps = (state, { location, params }) => {
 const mapDispatchToProps = dispatch => ({
   fetchCurrencyPairs: () => dispatch(fetchCurrencyPairs()),
   fetchOrders: () => dispatch(fetchOrders()),
+  cancelOrder: (order) => dispatch(cancelOrder(order))
 });
 
 export default withRouter(connect(

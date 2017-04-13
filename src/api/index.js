@@ -5,8 +5,13 @@ export const fetchOrders = () => fetch('http://rest.velocorner.com/retrieveOrder
 export const submitOrder = (order) => {
   return fetch('http://rest.velocorner.com/createOrder', {
     method: 'POST',
-    body: order
+    body: JSON.stringify(order)
   });
 }
 
-export const cancelOrder = () => fetch('http://rest.velocorner.com/cancelOrder')
+export const cancelOrder = (id) => {
+  return fetch('http://rest.velocorner.com/cancelOrder', {
+    method: 'POST',
+    body: JSON.stringify(id)
+  })
+}

@@ -14,19 +14,13 @@ class OrdersList extends React.Component {
 
   componentDidMount() {
     const { currencyPairsFetched, path } = this.props;
-    console.log("Orders list did mount")
     if (path !== OVERVIEW) {
       if (!currencyPairsFetched) {
         this.handleFetchCurrencyPairs().then(this.handleFetchOrders());
       } else {
-        console.log("now about to fetch more orders")
         this.handleFetchOrders();
       }
     }
-  }
-
-  componentWillUnmount() {
-    console.log("Orders List Will Unmount");
   }
 
   handleFetchOrders() {
@@ -39,21 +33,12 @@ class OrdersList extends React.Component {
 
   render() {
     const { orders, isFetching, title } = this.props;
-    var obj = {};
-    var arr = [];
-    orders.forEach(o => {
-      if (!obj[o.id]) {
-        obj[o.id] = true;
-      } else {
-        arr.push(o)
-      }
-    });
-    console.log("orders", orders)
-    console.log("duplicates", arr)
+
     const orderList = orders.map(order =>
       <OrderRowItem
         key={order.id}
         order={order}
+        onCancelOrder={this.props.cancelOrder}
       />
     )
 
@@ -81,14 +66,17 @@ class OrdersList extends React.Component {
           <Col xs={2}>
             Type
           </Col>
-          <Col xs={3}>
+          <Col xs={2}>
             FX
           </Col>
           <Col xs={3}>
             Limit
           </Col>
-          <Col xs={4}>
+          <Col xs={3}>
             Valid Until
+          </Col>
+          <Col xs={2}>
+
           </Col>
         </Row>
         {orderList}

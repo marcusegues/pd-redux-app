@@ -11,7 +11,6 @@ class CurrencyPairsList extends React.Component {
   }
 
   handleFetchCurrencyPairs() {
-    console.log("fetching from currencypairslist");
     this.props.fetchCurrencyPairs();
   }
 

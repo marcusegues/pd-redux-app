@@ -20,7 +20,6 @@ class MarketOverview extends React.Component {
   }
 
   handleFetchCurrencyPairs() {
-    console.log(this.props);
     return this.props.fetchCurrencyPairs();
   }
 

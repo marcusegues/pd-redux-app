@@ -60,13 +60,14 @@ const cancelOrderSuccess = (order) => ({
   order,
 });
 
-export const cancelOrder = (order, id) => {
+export const cancelOrder = (order) => {
   return (dispatch) => {
     dispatch(cancelOrderRequest());
-    return api.cancelOrder()
-      .then(response => response.json())
-      .then(order => {
-        dispatch(cancelOrderSuccess(order, id))
-      });
+    return api.cancelOrder(order.id)
+      .then(success => {
+        if (success.ok) {
+          dispatch(cancelOrderSuccess(order));
+        }
+      })
   }
 }
